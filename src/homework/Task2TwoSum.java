@@ -19,9 +19,24 @@ public class Task2TwoSum {
         throw new IllegalArgumentException("нет решения");
     }
 
+    public String twoSumString(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int requiredNumber = target - nums[i];
+            if (map.containsKey(requiredNumber) && map.get(requiredNumber) != i) {
+                return String.format("[%d, %d]", nums[i], nums[map.get(requiredNumber)]);
+            }
+        }
+        throw new IllegalArgumentException("нет решения");
+    }
+
     public static void main(String[] args) {
         int[] nums = {3, 4, 2, 7};
         Task2TwoSum test = new Task2TwoSum();
         System.out.println(Arrays.toString(test.twoSum(nums, 10)));
+        System.out.println(test.twoSumString(nums, 10));
     }
 }

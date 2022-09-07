@@ -98,6 +98,7 @@ public class ComplexExamples {
         System.out.println("Duplicate filtered, grouped by name, sorted by name and id:");
         System.out.println();
         Map<String, Long> result = Arrays.stream(RAW_DATA)
+                .filter(Objects::nonNull)
                 .distinct()
                 .sorted(Comparator
                         .comparing(Person::getName)
